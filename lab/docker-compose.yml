@@ -1,0 +1,26 @@
+services:
+  # ─── Back-end: Nginx with Vulnerable Misconfiguration (CRLF injection) ─────────
+  backend:
+    build: ./backend
+    container_name: crlf-backend
+    ports:
+      - "18080:80"
+    networks:
+      - crlf-net
+
+  # ─── BFF: Reverse Proxy with httpx (weak link) ────────────────────────────────────
+  bff:
+    build: ./bff
+    container_name: crlf-bff
+    depends_on:
+      - backend
+    ports:
+      - "18000:8000"
+    environment:
+      - BACKEND_URL=http://backend
+    networks:
+      - crlf-net
+
+networks:
+  crlf-net:
+    driver: bridge
