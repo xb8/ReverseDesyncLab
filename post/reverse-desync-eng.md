@@ -118,7 +118,7 @@ Host: target
 
 Nginx decodes the path and constructs the poisoned response. `httpx` forwards it. The victim navigates to `/api/profile` and receives the JavaScript alert instead of the legitimate JSON.
 
-![image1](/images/desync/desyncalert.png)
+![image1](/post/images/desync/desyncalert.png)
 
 
 ## 6. Conclusion
@@ -129,7 +129,7 @@ If an architecture uses a Python proxy in front of a vulnerable Nginx (or any ba
 
 ## 7. Gol %0D%0A Roger's Treasure
 
-![image2](/images/desync/goldroger.png)
+![image2](/post/images/desync/goldroger.png)
 
 The web is probably vast enough that some vulnerable reverse desync configuration like this exists in the wild... happy hunting!
 
